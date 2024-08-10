@@ -1,19 +1,19 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
-import { useRouter, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from "expo-router";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
+import { useProductsContext } from "@/context/ProductContext";
 
 const ProductDetails = () => {
   const { id } = useLocalSearchParams();
-  const router = useRouter();
-  
-  // Dados de exemplo (substitua com seus dados reais ou fetch)
-  const product = {
+  const { getProductById } = useProductsContext();
+
+  const product = getProductById(id as string) || {
     id: id,
-    name: `Product ${id}`,
-    price: `R$ ${parseInt(id) * 12}`,
-    image: `https://via.placeholder.com/100?text=Produto+${id}`,
+    name: `Produto ${id}`,
+    price: `R$ `,
+    image: ``,
   };
 
   return (
@@ -28,8 +28,8 @@ const ProductDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
   image: {
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginVertical: 10,
   },
   price: {
     fontSize: 18,
-    color: 'green',
+    color: "green",
   },
 });
 
