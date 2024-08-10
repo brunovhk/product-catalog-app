@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useRouter } from "expo-router";
 
 const numColumns = 2;
 const spacing = 10; // Espaçamento entre os cards
@@ -17,11 +18,13 @@ const themeColors = {
     cardBackground: "#A1CEDC",
     priceColor: "#00a123", // Ajuste da cor do preço para um melhor contraste no tema claro
     removeButtonColor: "#ff4d4d", // Cor do botão de remoção no tema claro
+    detailsButtonColor: "#007bff", // Cor do botão de detalhes no tema claro
   },
   dark: {
     cardBackground: "#555555",
     priceColor: "#01d42f", // Ajuste da cor do preço para um melhor contraste no tema escuro
     removeButtonColor: "#ff4d4d", // Cor do botão de remoção no tema escuro
+    detailsButtonColor: "#339af0", // Cor do botão de detalhes no tema escuro
   },
 };
 
@@ -43,6 +46,11 @@ const ProductList: React.FC<ProductListProps> = ({
 }) => {
   const colorScheme = useColorScheme() ?? "light";
   const colors = themeColors[colorScheme];
+  const router = useRouter();
+
+  const handleViewDetails = (id: string) => {
+    router.push({ pathname: `/product/${id}` });
+  };
 
   const renderItem = ({ item }: { item: Product }) => (
     <ThemedView
@@ -53,6 +61,15 @@ const ProductList: React.FC<ProductListProps> = ({
       <ThemedText style={[styles.productPrice, { color: colors.priceColor }]}>
         {item.price}
       </ThemedText>
+      <TouchableOpacity
+        style={[
+          styles.detailsButton,
+          { backgroundColor: colors.detailsButtonColor },
+        ]}
+        onPress={() => handleViewDetails(item.id)}
+      >
+        <ThemedText style={styles.detailsButtonText}>Ver detalhes</ThemedText>
+      </TouchableOpacity>
       <TouchableOpacity
         style={[
           styles.removeButton,
@@ -118,6 +135,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   removeButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  detailsButton: {
+    marginTop: 10,
+    width: "100%",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  detailsButtonText: {
     color: "#fff",
     fontWeight: "bold",
   },
