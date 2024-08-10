@@ -1,5 +1,11 @@
 import React from "react";
-import { FlatList, Image, StyleSheet, useColorScheme } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  useColorScheme,
+  TouchableOpacity,
+} from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
@@ -10,10 +16,12 @@ const themeColors = {
   light: {
     cardBackground: "#A1CEDC",
     priceColor: "#00a123", // Ajuste da cor do preço para um melhor contraste no tema claro
+    removeButtonColor: "#ff4d4d", // Cor do botão de remoção no tema claro
   },
   dark: {
     cardBackground: "#555555",
     priceColor: "#01d42f", // Ajuste da cor do preço para um melhor contraste no tema escuro
+    removeButtonColor: "#ff4d4d", // Cor do botão de remoção no tema escuro
   },
 };
 
@@ -26,9 +34,13 @@ type Product = {
 
 type ProductListProps = {
   products: Product[];
+  onRemoveProduct: (id: string) => void; // Função de callback para remover o produto
 };
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
+const ProductList: React.FC<ProductListProps> = ({
+  products,
+  onRemoveProduct,
+}) => {
   const colorScheme = useColorScheme() ?? "light";
   const colors = themeColors[colorScheme];
 
@@ -41,6 +53,15 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       <ThemedText style={[styles.productPrice, { color: colors.priceColor }]}>
         {item.price}
       </ThemedText>
+      <TouchableOpacity
+        style={[
+          styles.removeButton,
+          { backgroundColor: colors.removeButtonColor },
+        ]}
+        onPress={() => onRemoveProduct(item.id)}
+      >
+        <ThemedText style={styles.removeButtonText}>Remover produto</ThemedText>
+      </TouchableOpacity>
     </ThemedView>
   );
 
@@ -88,6 +109,17 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 14,
     marginTop: 5,
+  },
+  removeButton: {
+    marginTop: 10,
+    width: "100%",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  removeButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
 
