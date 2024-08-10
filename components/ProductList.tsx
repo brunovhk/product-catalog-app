@@ -48,8 +48,8 @@ const ProductList: React.FC<ProductListProps> = ({
   const colors = themeColors[colorScheme];
   const router = useRouter();
 
-  const handleViewDetails = (id: string) => {
-    router.push({ pathname: `/product/${id}` });
+  const handleViewDetails = (route: string) => {
+    router.push(route);
   };
 
   const renderItem = ({ item }: { item: Product }) => (
@@ -66,7 +66,7 @@ const ProductList: React.FC<ProductListProps> = ({
           styles.detailsButton,
           { backgroundColor: colors.detailsButtonColor },
         ]}
-        onPress={() => handleViewDetails(item.id)}
+        onPress={() => handleViewDetails(`/product/${item.id}`)}
       >
         <ThemedText style={styles.detailsButtonText}>Ver detalhes</ThemedText>
       </TouchableOpacity>
