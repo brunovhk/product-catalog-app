@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import ProductList from "@/components/ProductList";
 import { ThemedView } from "@/components/ThemedView";
@@ -17,12 +17,17 @@ const generateProducts = (count: number) => {
   return products;
 };
 
-const products = generateProducts(15);
-
 const ExploreScreen = () => {
+  const [products, setProducts] = useState(generateProducts(15));
+
+  const handleRemoveProduct = (id: string) => {
+    setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== id)
+    );
+  };
   return (
     <ThemedView style={styles.container}>
-      <ProductList products={products} />
+      <ProductList products={products} onRemoveProduct={handleRemoveProduct} />
     </ThemedView>
   );
 };
