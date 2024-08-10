@@ -1,16 +1,21 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
+import { FlatList, Image, StyleSheet, useColorScheme } from "react-native";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
-const { width } = Dimensions.get("window");
 const numColumns = 2;
-const columnWidth = width / numColumns;
+const spacing = 10; // Espaçamento entre os cards
+
+const themeColors = {
+  light: {
+    cardBackground: "#A1CEDC",
+    priceColor: "#00a123", // Ajuste da cor do preço para um melhor contraste no tema claro
+  },
+  dark: {
+    cardBackground: "#555555",
+    priceColor: "#01d42f", // Ajuste da cor do preço para um melhor contraste no tema escuro
+  },
+};
 
 type Product = {
   id: string;
@@ -24,12 +29,19 @@ type ProductListProps = {
 };
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  const colorScheme = useColorScheme() ?? "light";
+  const colors = themeColors[colorScheme];
+
   const renderItem = ({ item }: { item: Product }) => (
-    <View style={styles.productCard}>
+    <ThemedView
+      style={[styles.productCard, { backgroundColor: colors.cardBackground }]}
+    >
       <Image source={{ uri: item.image }} style={styles.productImage} />
-      <Text style={styles.productName}>{item.name}</Text>
-      <Text style={styles.productPrice}>{item.price}</Text>
-    </View>
+      <ThemedText style={styles.productName}>{item.name}</ThemedText>
+      <ThemedText style={[styles.productPrice, { color: colors.priceColor }]}>
+        {item.price}
+      </ThemedText>
+    </ThemedView>
   );
 
   return (
@@ -39,7 +51,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       keyExtractor={(item) => item.id}
       numColumns={numColumns}
       columnWrapperStyle={styles.row}
-      contentContainerStyle={styles.listContainer} // Espaçamento no topo
+      contentContainerStyle={styles.listContainer}
     />
   );
 };
@@ -47,19 +59,21 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
 const styles = StyleSheet.create({
   row: {
     justifyContent: "space-between",
+    marginHorizontal: spacing,
   },
   listContainer: {
-    paddingVertical: 10, // Padding vertical ao conteúdo da lista
+    paddingVertical: 10,
   },
   productCard: {
-    width: columnWidth - 15,
-    marginBottom: 15,
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: spacing,
     padding: 10,
+    margin: 10,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#ddd",
     alignItems: "center",
-    backgroundColor: "#f9f9f9",
   },
   productImage: {
     width: "100%",
@@ -73,7 +87,6 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 14,
-    color: "#888",
     marginTop: 5,
   },
 });

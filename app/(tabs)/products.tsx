@@ -1,6 +1,7 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet } from "react-native";
-import ProductList from "../../components/ProductList";
+import { StyleSheet } from "react-native";
+import ProductList from "@/components/ProductList";
+import { ThemedView } from "@/components/ThemedView";
 
 // Dados de exemplo para lista de produtos
 const generateProducts = (count: number) => {
@@ -20,17 +21,15 @@ const products = generateProducts(15);
 
 const ExploreScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ThemedView style={styles.container}>
       <ProductList products={products} />
-    </SafeAreaView>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: "#fff",
   },
 });
 
