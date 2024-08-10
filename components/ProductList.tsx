@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   removeButton: {
     marginTop: 10,
     width: "100%",
-    padding: 10,
+    padding: 5,
     borderRadius: 5,
     alignItems: "center",
   },
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   detailsButton: {
     marginTop: 10,
     width: "100%",
-    padding: 10,
+    padding: 5,
     borderRadius: 5,
     alignItems: "center",
   },
