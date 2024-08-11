@@ -50,7 +50,7 @@ Este projeto é um aplicativo de catálogo de produtos desenvolvido em React Nat
 
 ### Instalar o APK no Dispositivo
 
-1. **Baixe o arquivo APK:** O APK do aplicativo está disponível na pasta raiz do projeto no GitHub com o nome `ProductCatalogApp.APK`. Você pode baixá-lo [aqui](./ProductCatalogApp.apk).
+1. **Baixe o arquivo APK:** O APK do aplicativo está disponível para download através do Expo. Você pode acessar o APK pelo link fornecido na Expo [neste local](https://expo.dev/artifacts/eas/9tvStxdsWX53TpH7Rv9Vsi.apk).
 
 2. **Permita a instalação de aplicativos de fontes desconhecidas:** Antes de instalar o APK, você precisará permitir a instalação de aplicativos de fontes desconhecidas nas configurações de segurança do seu dispositivo Android.
 
