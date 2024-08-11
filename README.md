@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Documentação do Projeto - Catálogo de Produtos
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Visão Geral
 
-## Get started
+Este projeto é um aplicativo de catálogo de produtos desenvolvido em React Native. O aplicativo permite visualizar uma lista de produtos, excluir produtos e ver detalhes de cada produto.
 
-1. Install dependencies
+## Instruções para Rodar a Aplicação
 
-   ```bash
-   npm install
-   ```
+### Requisitos
 
-2. Start the app
+- **Node.js**: Certifique-se de ter o Node.js instalado. Você pode baixá-lo [aqui](https://nodejs.org/).
+- **npm**: O npm é instalado automaticamente com o Node.js.
 
-   ```bash
-    npx expo start
-   ```
+### Rodar a Aplicação em um Emulador ou Dispositivo Físico
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. **Certifique-se de ter o Expo CLI instalado.** Se ainda não o tiver, instale-o globalmente.
 
 ```bash
-npm run reset-project
+   npm install -g expo-cli
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. **Clone o repositório do projeto.**
 
-## Learn more
+```bash
+   git clone <URL_DO_REPOSITORIO>
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. **Navegue até o diretório do projeto.**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+   cd <NOME_DO_DIRETORIO_DO_PROJETO>
+```
 
-## Join the community
+4. **Instale as dependências do projeto.**
 
-Join our community of developers creating universal apps.
+```bash
+   npm install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+5. **Inicie o servidor de desenvolvimento Expo.**
+
+```bash
+   npx expo start
+```
+
+6. **Para rodar o aplicativo em um emulador ou dispositivo físico:**
+   - **Emulador Android:** Certifique-se de que o Android Studio está instalado e o emulador está configurado. Pressione `a` no terminal para abrir o app no emulador Android.
+   - **Emulador iOS:** Certifique-se de que você está em um sistema macOS com Xcode instalado. Pressione `i` no terminal para abrir o app no emulador iOS.
+   - **Dispositivo Físico:** Escaneie o QR Code exibido no terminal com o aplicativo Expo Go, disponível na Google Play Store ou App Store.
+
+### Instalar o APK no Dispositivo
+
+1. **Baixe o arquivo APK:** O APK do aplicativo está disponível na pasta raiz do projeto no GitHub com o nome `ProductCatalogApp.APK`. Você pode baixá-lo [aqui](./ProductCatalogApp.apk).
+
+2. **Permita a instalação de aplicativos de fontes desconhecidas:** Antes de instalar o APK, você precisará permitir a instalação de aplicativos de fontes desconhecidas nas configurações de segurança do seu dispositivo Android.
+
+3. **Instale o APK:** Transfira o arquivo APK para o seu dispositivo e abra-o para iniciar a instalação.
+
+   **Nota:** Como o aplicativo não está disponível na Google Play Store, você precisará permitir a instalação de aplicativos de fontes desconhecidas. Isso pode ser feito nas configurações de segurança do seu dispositivo Android ou ao iniciar a instalação do aplicativo.
+
+### Rodar o Aplicativo na Web
+
+1. **Inicie o servidor de desenvolvimento Expo (caso ainda não esteja rodando).**
+
+```bash
+   npx expo start
+```
+
+2. **Para abrir o aplicativo na web, pressione `w` no terminal para abrir o aplicativo em um navegador da web.**
+
+   Após gerar o QR Code, você pode escanear o código com o Expo Go para visualizar no dispositivo móvel ou usar o navegador para visualizar o aplicativo na web.
+
+## Documentação Adicional
+
+- **Licença:** Este projeto está licenciado sob a [Licença MIT](LICENSE).
