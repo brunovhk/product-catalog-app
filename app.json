@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "product-catalog-app",
+    "name": "Catálogo de Produtos",
     "slug": "product-catalog-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.brunovhk.productcatalogapp"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "35600e85-e0ee-4d1d-8ca7-7bae38092395"
+      }
     }
   }
 }
