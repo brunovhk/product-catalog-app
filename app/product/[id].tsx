@@ -14,12 +14,17 @@ const ProductDetails = () => {
     name: `Produto ${id}`,
     price: `R$ `,
     image: ``,
+    description: `Descrição de Produto não disponível`,
   };
 
   return (
     <ThemedView style={styles.container}>
       <Image source={{ uri: product.image }} style={styles.image} />
       <ThemedText style={styles.name}>{product.name}</ThemedText>
+      <ThemedText style={styles.description}>
+        <ThemedText style={styles.descriptionTitle}>Descrição:</ThemedText>{" "}
+        {product.description}
+      </ThemedText>
       <ThemedText style={styles.price}>{product.price}</ThemedText>
     </ThemedView>
   );
@@ -40,6 +45,14 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     fontWeight: "bold",
+    marginVertical: 10,
+  },
+  descriptionTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  description: {
+    fontSize: 16,
     marginVertical: 10,
   },
   price: {
