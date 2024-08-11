@@ -9,6 +9,7 @@ const generateProducts = (count: number) => {
     products.push({
       id: i.toString(),
       name: productName,
+      description: fakerPT_BR.lorem.paragraph(),
       price: `R$ ${fakerPT_BR.commerce.price()}`,
       image: fakerPT_BR.image.urlPlaceholder({
         text: productName,
@@ -26,6 +27,7 @@ const generateProducts = (count: number) => {
 interface Product {
   id: string;
   name: string;
+  description: string;
   price: string;
   image: string;
 }
